@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon">✦</span>
+            <h2>SSC Journey</h2>
+            <p>One step at a time.</p>
+        </div>
+
+        <div class="nav-label">MENU</div>
+
+        <button class="nav-btn active" onclick="showSection('dashboard', this)">⌂ Dashboard</button>
+        <button class="nav-btn" onclick="showSection('quant', this)">◈ Quant</button>
+        <button class="nav-btn" onclick="showSection('reasoning', this)">◈ Reasoning</button>
+        <button class="nav-btn" onclick="showSection('english', this)">◈ English</button>
+        <button class="nav-btn" onclick="showSection('gk', this)">◈ General Awareness</button>
+
+        <div class="sidebar-note">
+            <p>✧ Keep showing up.</p>
+            <small>Your SSC journey is yours to build.</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page-section active">
+
+            <div class="welcome">
+    <div>
+        <p class="eyebrow">YOUR PERSONAL STUDY SPACE</p>
+        <h1>Welcome, Pravalika! ✨</h1>
+        <p class="welcome-message">
+            Every small step today builds the future you dream of.
+        </p>
+        <p id="date"></p>
+    </div>
+</div>
+<div class="card profile-card">
+
+    <div class="profile-header">
+        <div class="profile-avatar">P</div>
+
+        <div class="profile-info">
+            <p class="eyebrow">MY PROFILE</p>
+            <h2>Pravalika</h2>
+            <p>SSC Aspirant ✨</p>
+        </div>
+    </div>
+
+    <div class="profile-details">
+
+        <div class="profile-item">
+            <span>🎯</span>
+            <div>
+                <small>My Goal</small>
+                <strong>SSC CGL</strong>
+            </div>
+        </div>
+
+        <div class="profile-item">
+            <span>📚</span>
+            <div>
+                <small>My Focus</small>
+                <strong>Daily Learning</strong>
+            </div>
+        </div>
+
+        <div class="profile-item">
+            <span>🌱</span>
+            <div>
+                <small>My Mindset</small>
+                <strong>Progress, not perfection</strong>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="profile-quote">
+        "I am building my future, one day at a time."
+    </div>
+
+</div>
+
+            <div class="card progress-card">
+                <h2>Daily Progress</h2>
+
+                <div id="progress">0%</div>
+
+                <div class="progress-container">
+                    <div id="progressFill"></div>
+                </div>
+
+                <p id="taskCounter">0 of 0 tasks completed</p>
+            </div>
+
+            <div class="card motivation-card">
+                <p class="eyebrow">DAILY REMINDER</p>
+                <h2 id="motivation"></h2>
+            </div>
+
+            <div class="card">
+                <h2>My Daily Tasks</h2>
+
+                <div class="task-input-area">
+                    <input type="text" id="taskInput" placeholder="Add your study task...">
+                    <button onclick="addTask()">+ Add Task</button>
+                </div>
+
+                <div id="task-list"></div>
+            </div>
+
+            <div class="card">
+                <h2>Today's Study Plan</h2>
+                <p id="planDate" class="muted"></p>
+
+                <button onclick="generatePlan()">Generate Today's Plan</button>
+
+                <div id="todayPlan"></div>
+            </div>
+
+        </section>
+
+        <!-- QUANT -->
+
+        <section id="quant" class="page-section">
+
+            <h1>Quantitative Aptitude</h1>
+            <p class="section-description">Build your mathematical foundation, one topic at a time.</p>
+
+            <div class="card">
+                <h2>Upload Quant Syllabus</h2>
+
+                <input type="file" id="quantFile" accept="image/*">
+
+                <button onclick="readSyllabus('quant')">Read Syllabus</button>
+
+                <p id="quantStatus" class="status"></p>
+
+                <div id="quantPreview"></div>
+
+                <button id="quantSaveBtn" onclick="saveSyllabus('quant')" hidden>Save Topics</button>
+            </div>
+
+            <div class="card">
+                <h2>My Quant Topics</h2>
+                <p class="muted">Use ↑ and ↓ to change your study order.</p>
+                <div id="quantList"></div>
+            </div>
+
+        </section>
+
+        <!-- REASONING -->
+
+        <section id="reasoning" class="page-section">
+
+            <h1>Reasoning</h1>
+            <p class="section-description">Develop logical thinking and problem-solving skills.</p>
+
+            <div class="card">
+                <h2>Upload Reasoning Syllabus</h2>
+
+                <input type="file" id="reasoningFile" accept="image/*">
+
+                <button onclick="readSyllabus('reasoning')">Read Syllabus</button>
+
+                <p id="reasoningStatus" class="status"></p>
+
+                <div id="reasoningPreview"></div>
+
+                <button id="reasoningSaveBtn" onclick="saveSyllabus('reasoning')" hidden>Save Topics</button>
+            </div>
+
+            <div class="card">
+                <h2>My Reasoning Topics</h2>
+                <p class="muted">Use ↑ and ↓ to change your study order.</p>
+                <div id="reasoningList"></div>
+            </div>
+
+        </section>
+
+        <!-- ENGLISH -->
+
+        <section id="english" class="page-section">
+
+            <h1>English</h1>
+            <p class="section-description">Improve grammar, vocabulary and comprehension.</p>
+
+            <div class="card">
+                <h2>Upload English Syllabus</h2>
+
+                <input type="file" id="englishFile" accept="image/*">
+
+                <button onclick="readSyllabus('english')">Read Syllabus</button>
+
+                <p id="englishStatus" class="status"></p>
+
+                <div id="englishPreview"></div>
+
+                <button id="englishSaveBtn" onclick="saveSyllabus('english')" hidden>Save Topics</button>
+            </div>
+
+            <div class="card">
+                <h2>My English Topics</h2>
+                <p class="muted">Use ↑ and ↓ to change your study order.</p>
+                <div id="englishList"></div>
+            </div>
+
+        </section>
+
+        <!-- GK -->
+
+        <section id="gk" class="page-section">
+
+            <h1>General Awareness</h1>
+            <p class="section-description">Learn, revise and strengthen your general knowledge.</p>
+
+            <div class="card">
+                <h2>Upload General Awareness Syllabus</h2>
+
+                <input type="file" id="gkFile" accept="image/*">
+
+                <button onclick="readSyllabus('gk')">Read Syllabus</button>
+
+                <p id="gkStatus" class="status"></p>
+
+                <div id="gkPreview"></div>
+
+                <button id="gkSaveBtn" onclick="saveSyllabus('gk')" hidden>Save Topics</button>
+            </div>
+
+            <div class="card">
+                <h2>My General Awareness Topics</h2>
+                <p class="muted">Use ↑ and ↓ to change your study order.</p>
+                <div id="gkList"></div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
