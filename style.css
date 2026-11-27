@@ -591,4 +591,51 @@ button[hidden] {
 
     font-style: italic;
     line-height: 1.6;
+
+
+
+   
+}
+
+
+
+
+
+
+
+
+/* MANUAL SYLLABUS ENTRY */
+
+.manual-syllabus {
+    margin: 18px 0;
+    padding: 18px;
+    border: 1px solid #c9b7e8;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.manual-syllabus h3 {
+    margin-bottom: 12px;
+}
+
+.manual-syllabus textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #c9b7e8;
+    border-radius: 10px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 15px;
+    color: #222;
+    background: #fff;
+}
+
+.manual-syllabus button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
 }
