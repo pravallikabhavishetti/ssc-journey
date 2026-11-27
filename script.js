@@ -460,6 +460,67 @@ function saveSyllabus(subject) {
         saveButton.hidden = true;
     }
 }
+// ========================================
+// MANUAL SYLLABUS ENTRY
+// ========================================
+
+function saveManualSyllabus(subject) {
+
+    const input = document.getElementById(subject + "ManualInput");
+
+    if (!input) {
+        alert("Manual syllabus input not found.");
+        return;
+    }
+
+    const text = input.value.trim();
+
+    if (!text) {
+        alert("Please enter your syllabus first.");
+        return;
+    }
+
+    const topics = text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => line.replace(/^[\s\d.)\-•]+/, "").trim())
+        .filter(line => line.length > 0);
+
+    const uniqueTopics = [...new Set(topics)];
+
+    const oldTopics = syllabus[subject] || [];
+
+    syllabus[subject] = uniqueTopics.map(text => {
+
+        const existing = oldTopics.find(topic => topic.text === text);
+
+        return existing
+            ? existing
+            : {
+                text: text,
+                completed: false
+            };
+    });
+
+    localStorage.setItem(
+        "sscSyllabus",
+        JSON.stringify(syllabus)
+    );
+
+    renderSyllabus(subject);
+    renderSubjectProgress();
+
+    input.value = "";
+
+    const status = document.getElementById(subject + "Status");
+
+    if (status) {
+        status.textContent = "Manual syllabus saved successfully!";
+    }
+
+    alert("Manual syllabus saved successfully!");
+}
 
 // ========================================
 // DISPLAY SAVED TOPICS
