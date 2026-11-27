@@ -143,6 +143,19 @@
                 <h2>Upload Quant Syllabus</h2>
 
                 <input type="file" id="quantFile" accept="image/*">
+                <div class="manual-syllabus">
+    <h3>✍️ Enter Syllabus Manually</h3>
+
+    <textarea
+        id="quantManualInput"
+        placeholder="Unit 1: Arithmetic&#10;Number System&#10;Simplification&#10;Percentage&#10;&#10;Unit 2: Algebra&#10;Algebraic Identities&#10;Equations"
+        rows="10"
+    ></textarea>
+
+    <button onclick="saveManualSyllabus('quant')">
+        Save Manual Syllabus
+    </button>
+</div>
 
                 <button onclick="readSyllabus('quant')">Read Syllabus</button>
 
